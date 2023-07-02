@@ -5,3 +5,11 @@ netty:
   default:
     allocator:
       max-order: 3
+---
+microstream:
+  rest:
+    enabled: true
+  storage:
+    order:
+      root-class: 'fete.bird.entity.RootContainer'
+      storage-directory: 'api/build/order-storage'

@@ -20,6 +20,9 @@ dependencies {
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     developmentOnly("io.micronaut.microstream:micronaut-microstream-rest")
+
+    implementation project(':core')
+    runtimeOnly project(':infrastructure')
 }
 
 application {
