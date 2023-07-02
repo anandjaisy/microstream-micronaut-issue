@@ -6,6 +6,7 @@ import fete.bird.interfaces.IOrderRepository;
 import io.micronaut.microstream.RootProvider;
 import jakarta.inject.Singleton;
 
+import java.util.Map;
 import java.util.UUID;
 
 @Singleton
@@ -18,7 +19,9 @@ public class OrderRepository implements IOrderRepository {
 
     @Override
     public Order create(Order order) {
-        var test =new Order(UUID.randomUUID(), "Hello", "Test", "asdasd");
-        return test;
+        Map<UUID, Order> root = rootProvider.root().getOrders();
+        root.put(order.id(), order);
+        //var test =new Order(UUID.randomUUID(), "Hello", "Test", "asdasd");
+        return order;
     }
 }
