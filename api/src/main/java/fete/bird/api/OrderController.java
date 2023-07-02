@@ -22,13 +22,4 @@ private final IOrderRepository iOrderRepository;
         var result =iOrderRepository.create(model);
         return result;
     }
-    @Put
-    public Order put(Order model) {
-        return iOrderRepository.create(model);
-    }
-
-    @Get
-    Collection<Order> list() {
-        return List.of(new Order(UUID.randomUUID(), "Hello", "Test", "asdasd"));
-    }
 }

@@ -4,6 +4,7 @@ import fete.bird.entity.Order;
 import fete.bird.entity.RootContainer;
 import fete.bird.interfaces.IOrderRepository;
 import io.micronaut.microstream.RootProvider;
+import io.micronaut.microstream.annotations.StoreParams;
 import jakarta.inject.Singleton;
 
 import java.util.Map;
@@ -20,8 +21,12 @@ public class OrderRepository implements IOrderRepository {
     @Override
     public Order create(Order order) {
         Map<UUID, Order> root = rootProvider.root().getOrders();
-        root.put(order.id(), order);
-        //var test =new Order(UUID.randomUUID(), "Hello", "Test", "asdasd");
+        return createOrder(root, order);
+    }
+
+    @StoreParams("orders")
+    protected Order createOrder(Map<UUID, Order> orders, Order order) {
+        orders.put(order.id(), order);
         return order;
     }
 }
